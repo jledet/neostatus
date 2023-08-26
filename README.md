@@ -2,6 +2,8 @@
 
 This is a small [CircuitPython](https://circuitpython.org/) firmware for the [Adafruit Neo Trinkey](https://www.adafruit.com/product/4870) that converts it to a USB controlled status light.
 
+![](neostatus.jpg)
+
 ## Firmware Installation
 
 - Follow the [CircuitPython install guide](https://learn.adafruit.com/welcome-to-circuitpython/installing-circuitpython) if your board does not have CircuitPython installed.
