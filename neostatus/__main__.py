@@ -1,6 +1,4 @@
-#!/usr/bin/env python
-
-from neostatus import NeoStatus
+from . import NeoStatus
 
 
 def main():
@@ -20,8 +18,7 @@ def main():
         status.set_color((r, g, b))
 
 
-if __name__ == '__main__':
-    try:
-        main()
-    except KeyboardInterrupt:
-        print()
+try:
+    main()
+except KeyboardInterrupt:
+    print()
