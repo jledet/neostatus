@@ -1,21 +1,10 @@
 #!/usr/bin/env python
 
-import glob
-import pyvisa
+from neostatus import NeoStatus
 
-
-class StatusLight(object):
-    def __init__(self):
-        rm = pyvisa.ResourceManager()
-        dev = glob.glob('/dev/serial/by-id/usb-Adafruit_Industries_LLC_NeoPixel_Trinkey_M0_*-if02')[0]
-        self.inst = rm.open_resource(f'ASRL{dev}::INSTR')
-
-    def set_color(self, color):
-        r, g, b = color
-        self.inst.write(f'RGB {r},{g},{b}')
 
 def main():
-    status = StatusLight()
+    status = NeoStatus()
     r, g, b = 255, 0, 0
     while True:
         if r > 0 and b == 0:
