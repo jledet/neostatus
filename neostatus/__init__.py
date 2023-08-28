@@ -19,3 +19,11 @@ class NeoStatus(object):
         r, g, b = color
         self.dev.write(f'RGB {r},{g},{b}\r\n'.encode('ascii'))
         self.dev.flush()
+
+    def reset(self):
+        self.dev.write('RESET\r\n'.encode('ascii'))
+        self.dev.flush()
+
+    def drive(self):
+        self.dev.write('DRIVE\r\n'.encode('ascii'))
+        self.dev.flush()
