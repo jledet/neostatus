@@ -5,7 +5,10 @@ from . import NeoStatus
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument('command', default='demo', choices=('reset', 'drive', 'safemode', 'rainbow'), help="Helper command")
+    parser.add_argument('command', default='rainbow', choices=('reset', 'drive', 'safemode', 'set', 'rainbow'), help="Helper command")
+    parser.add_argument('-r', '--red', type=int, choices=range(0, 256), required=False, help="Red component of RGB set", metavar='')
+    parser.add_argument('-g', '--green', type=int, choices=range(0, 256), required=False, help="Green component of RGB set", metavar='')
+    parser.add_argument('-b', '--blue', type=int, choices=range(0, 256), required=False, help="Blue component of RGB set", metavar='')
     args = parser.parse_args()
 
     status = NeoStatus()
@@ -17,6 +20,11 @@ def main():
             status.drive()
         case 'safemode':
             status.safemode()
+        case 'set':
+                if args.red is None or args.green is None or args.blue is None:
+                    print("-r, -g and -b must be specified when setting a color")
+                    exit(1)
+                status.set_color((args.red, args.green, args.blue))
         case 'rainbow':
             r, g, b = 255, 0, 0
             while True:
